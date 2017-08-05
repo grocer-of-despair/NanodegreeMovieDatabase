@@ -1,5 +1,7 @@
 import webbrowser
 
+class Video():
+    """ This Class provides variables that are shared between the Movie and TV Classes"""
 class Movie():
     # Defining __doc__ (""" allows you to use multiple lines """)
     """ This class provides a way to store movie related information """
