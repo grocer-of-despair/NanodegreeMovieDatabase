@@ -1,21 +1,41 @@
 import webbrowser
+import imdb
 
-class Video():
-    """ This Class provides variables that are shared between the Movie and TV Classes"""
 class Movie():
-    # Defining __doc__ (""" allows you to use multiple lines """)
     """ This class provides a way to store movie related information """
 
-    #Class VARIABLE. If the variable is not going to change then use ALL_CAPS
-    VALID_RATINGS = ["G","PG","PG-13","R"]
+    # Class CONSTRUCTOR
+    def __init__(self, movie_title, poster_image, trailer_youtube, imdb_link):
 
-    #Class CONSTRUCTOR
-    def __init__(self, movie_title, movie_storyline, poster_image, trailer_youtube):
         # Instance VARIABLES
         self.title = movie_title
-        self.storyline = movie_storyline
         self.poster_image_url = poster_image
         self.trailer_youtube_url = trailer_youtube
-    #An Instance Method
+        self.link = imdb_link
+
+    # When the movie tile is clicked this creates a modal to show the trailer
     def show_trailer(self):
         webbrowser.open(self.trailer_youtube_url)
+
+    # This uses the IMDB API to search for Movie Data
+    def imdb_info(self):
+
+        # Create instance of IMDB Class
+        ia = imdb.IMDb()
+
+        # Use the Instance Title to search IMDB
+        title = self.title
+        s_result = ia.search_movie(title)
+        movie = s_result[0] # Take the first result
+        ia.update(movie) # Update the class instance to the IMDB search Result
+
+        """ Pulls the data required for the movie from IMDB
+        In the case of a key having multiple results i.e. Director, Plot, we take the first result
+        and assign it to variables
+        """
+        director = movie['director'] # Get
+        self.director = director[0]
+        plot = movie['plot']
+        self.plot = plot[0]
+        actors = movie['cast']
+        self.rating = movie['rating']
