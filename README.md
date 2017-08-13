@@ -30,7 +30,7 @@ $ pip install imdbpy
 ### How to run this project
  * Install [Python](https://www.python.org/) (Python 2 recommended)
  * Clone this repository `git clone https://github.com/grocer-of-despair/NanodegreeMovieDatabase`
- * Run `entertainment_centre.py` from the cloned project dirctory: `python entertainment_centre.py`
+ * Run `entertainment_centre.py` from the cloned project directory: `python entertainment_centre.py`
  * Enjoy Fresh Tomatoes
 
 ## License
